@@ -3,15 +3,19 @@ import { useState, useEffect } from "react";
 import CommentsSection from "./CommentView";
 import axios from "axios";
 
+
 const DEFAULT_IMAGE_URL = "https://via.placeholder.com/300"; // Placeholder image URL
 
 function BlogList() {
   const [posts, setPosts] = useState([]);
   const [selectedPost, setSelectedPost] = useState(null);
+  const token = localStorage.getItem("authToken");
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/blogs")
+      .get("http://localhost:3000/api/blogs",{
+      headers: { Authorization: `Bearer ${token}` },
+    })
       .then((response) => {
         setPosts(response.data.result.data);
       })
@@ -30,7 +34,9 @@ function BlogList() {
   const handleCommentAdded = () => {
     // Optionally, fetch comments again to update the list
     axios
-      .get(`http://localhost:3000/api/blogs/${selectedPost.id}`)
+      .get(`http://localhost:3000/api/blogs/${selectedPost.id}`,{
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((response) => {
         setSelectedPost(response.data.result.data);
       })
