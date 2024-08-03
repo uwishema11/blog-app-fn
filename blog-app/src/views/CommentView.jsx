@@ -1,12 +1,11 @@
 /* eslint-disable react/prop-types */
+
 import { useState } from "react";
 import axios from "axios";
 
 // eslint-disable-next-line react/prop-types
 function CommentsSection({ postId, comments, onCommentAdded, onClose }) {
   const [newComment, setNewComment] = useState("");
-  const path = process.env.APP_URL; 
-
 
   const handleCommentChange = (event) => {
     setNewComment(event.target.value);
@@ -16,7 +15,7 @@ function CommentsSection({ postId, comments, onCommentAdded, onClose }) {
     if (newComment.trim() === "") return;
 
     axios
-      .post(`${path}/api/comments/${postId}`, {
+      .post(`http://localhost:3000/api/comments/${postId}`, {
         content: newComment,
       })
       .then(() => {

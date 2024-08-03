@@ -1,6 +1,5 @@
 // import "./App.css";
 import BlogList from "./views/BlogList";
-// import Navbar from "./components/NavBar";
 import Navbar from "./components/NavBar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LoginForm from "./views/LoginView";

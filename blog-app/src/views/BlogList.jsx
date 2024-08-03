@@ -1,9 +1,9 @@
+
 import { useState, useEffect } from "react";
 import CommentsSection from "./CommentView";
 import axios from "axios";
 
 const DEFAULT_IMAGE_URL = "https://via.placeholder.com/300"; // Placeholder image URL
-const path = process.env.REACT_APP_APP_URL; 
 
 function BlogList() {
   const [posts, setPosts] = useState([]);
@@ -11,16 +11,16 @@ function BlogList() {
 
   useEffect(() => {
     axios
-      .get(`${path}/api/blogs`)
+      .get("http://localhost:3000/api/blogs")
       .then((response) => {
         setPosts(response.data.result.data);
       })
       .catch((error) => console.error(`Error fetching posts: ${error}`));
-  }, [path]);
+  }, []);
 
   const handleReadMore = (postId) => {
     axios
-      .get(`${path}/api/blogs/${postId}`)
+      .get(`http://localhost:3000/api/blogs/${postId}`)
       .then((response) => {
         setSelectedPost(response.data.result.data);
       })
@@ -30,7 +30,7 @@ function BlogList() {
   const handleCommentAdded = () => {
     // Optionally, fetch comments again to update the list
     axios
-      .get(`${path}/api/blogs/${selectedPost.id}`)
+      .get(`http://localhost:3000/api/blogs/${selectedPost.id}`)
       .then((response) => {
         setSelectedPost(response.data.result.data);
       })

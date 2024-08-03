@@ -6,13 +6,12 @@ function RegisterForm() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-   const path = process.env.APP_URL; 
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     axios
-      .post(`${path}/api/auth/register`, {
+      .post("http://localhost:3000/api/auth/register", {
         firstName,
         lastName,
         email,
