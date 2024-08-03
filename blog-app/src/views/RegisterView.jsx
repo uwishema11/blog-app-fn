@@ -11,7 +11,7 @@ function RegisterForm() {
     event.preventDefault();
 
     axios
-      .post("http://localhost:3000/api/auth/register", {
+      .post("http://137.184.26.22:3000/api/auth/register", {
         firstName,
         lastName,
         email,

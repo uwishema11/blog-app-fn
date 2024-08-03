@@ -13,7 +13,7 @@ function BlogList() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/api/blogs",{
+      .get("http://137.184.26.22:3000/api/blogs",{
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
@@ -24,7 +24,7 @@ function BlogList() {
 
   const handleReadMore = (postId) => {
     axios
-      .get(`http://localhost:3000/api/blogs/${postId}`)
+      .get(`http://137.184.26.22:3000/api/blogs/${postId}`)
       .then((response) => {
         setSelectedPost(response.data.result.data);
       })
@@ -34,7 +34,7 @@ function BlogList() {
   const handleCommentAdded = () => {
     // Optionally, fetch comments again to update the list
     axios
-      .get(`http://localhost:3000/api/blogs/${selectedPost.id}`,{
+      .get(`http://137.184.26.22:3000/api/blogs/${selectedPost.id}`,{
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {

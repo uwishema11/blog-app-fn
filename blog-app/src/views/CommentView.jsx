@@ -15,7 +15,7 @@ function CommentsSection({ postId, comments, onCommentAdded, onClose }) {
     if (newComment.trim() === "") return;
 
     axios
-      .post(`http://localhost:3000/api/comments/${postId}`, {
+      .post(`http://137.184.26.22:3000/api/comments/${postId}`, {
         content: newComment,
       })
       .then(() => {
